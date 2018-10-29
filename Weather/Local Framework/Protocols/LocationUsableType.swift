@@ -8,13 +8,11 @@
 
 import UIKit
 import CoreLocation
-import arek
 
 protocol LocationUsableType: CLLocationManagerDelegate {
     var locationManager: CLLocationManager { get set }
     
     func configureLocationManager()
-    func didAuthorizedLocation(status: CLAuthorizationStatus)
 }
 
 extension LocationUsableType where Self: UIViewController {
@@ -22,24 +20,14 @@ extension LocationUsableType where Self: UIViewController {
     func configureLocationManager() {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
-            requestWhenInUseAuthorization()
+            locationManager.delegate = self
+            locationManager.requestWhenInUseAuthorization()
             
         case .authorizedAlways, .authorizedWhenInUse:
             configureManager()
             
         case .restricted, .denied:
             showAlert()
-        }
-    }
-    
-    fileprivate func requestWhenInUseAuthorization() {
-        ArekLocationWhenInUse().askForPermission { [weak self] (status) in
-            switch status {
-            case .authorized:
-                self?.didAuthorizedLocation(status: .authorizedWhenInUse)
-                self?.configureManager()
-            default: break
-            }
         }
     }
     

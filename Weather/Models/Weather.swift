@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import SwiftyJSON
+import Alamofire
 
 final class Weather {
     
@@ -20,6 +21,7 @@ final class Weather {
     var iconName = ""
     var temperature = 0
     var locationName = ""
+    var dataRequest: DataRequest?
     
     var iconURL: URL? {
         let iconURLString = ServiceManager.URLString.icon(named: iconName)
@@ -54,8 +56,8 @@ final class Weather {
 
 extension Weather {
     
-    func configure(for location: CLLocation) {
-        ServiceManager.weatherRequest(for: location).responseJSON { (response) in
+    func configure(coordinate: CLLocationCoordinate2D) {
+        dataRequest = ServiceManager.weatherRequest(coordinate: coordinate).responseJSON { (response) in
             DispatchQueue.global(qos: .background).async {
                 guard let value = response.result.value, response.result.error == nil else {
                     print(response.result.error?.localizedDescription ?? "Weather configure error")

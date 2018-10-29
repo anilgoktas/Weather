@@ -1,87 +1,24 @@
 PODS:
   - Alamofire (4.7.3)
-  - arek (4.0.2):
-    - arek/Bluetooth (= 4.0.2)
-    - arek/Camera (= 4.0.2)
-    - arek/CloudKit (= 4.0.2)
-    - arek/Contacts (= 4.0.2)
-    - arek/Core (= 4.0.2)
-    - arek/Events (= 4.0.2)
-    - arek/Health (= 4.0.2)
-    - arek/Location (= 4.0.2)
-    - arek/MediaLibrary (= 4.0.2)
-    - arek/Microphone (= 4.0.2)
-    - arek/Motion (= 4.0.2)
-    - arek/Notifications (= 4.0.2)
-    - arek/Photos (= 4.0.2)
-    - arek/Reminders (= 4.0.2)
-    - arek/SpeechRecognizer (= 4.0.2)
-    - PMAlertController (= 3.5.0)
-  - arek/Bluetooth (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Camera (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/CloudKit (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Contacts (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Core (4.0.2):
-    - PMAlertController (= 3.5.0)
-  - arek/Events (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Health (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Location (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/MediaLibrary (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Microphone (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Motion (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Notifications (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Photos (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/Reminders (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - arek/SpeechRecognizer (4.0.2):
-    - arek/Core
-    - PMAlertController (= 3.5.0)
-  - PMAlertController (3.5.0)
+  - Kingfisher (4.10.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
-  - arek
+  - Kingfisher
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - arek
-    - PMAlertController
+    - Kingfisher
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  arek: 59e81a83c8a6c4e70c3598f66d3f1092824d3170
-  PMAlertController: 06dab8160066fc4ce991c880e3722cd403e2926a
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: cafcd3aa234a3c2636b8e73214fe9f9bdb03247a
+PODFILE CHECKSUM: 0fd0715df0bbb5baad77b8d1d5edc386935b1fde
 
 COCOAPODS: 1.5.3

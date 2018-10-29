@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2035878421870CED00FD5451 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2035878321870CED00FD5451 /* MapViewController.swift */; };
+		20358786218710F900FD5451 /* CoordinateWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20358785218710F900FD5451 /* CoordinateWeatherViewController.swift */; };
+		203587882187117F00FD5451 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203587872187117F00FD5451 /* SegueHandler.swift */; };
 		204BF069218700FF0061732C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BF068218700FF0061732C /* AppDelegate.swift */; };
-		204BF06B218700FF0061732C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204BF06A218700FF0061732C /* ViewController.swift */; };
 		204BF06E218700FF0061732C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 204BF06C218700FF0061732C /* Main.storyboard */; };
 		204BF070218701000061732C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 204BF06F218701000061732C /* Assets.xcassets */; };
 		204BF073218701000061732C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 204BF071218701000061732C /* LaunchScreen.storyboard */; };
@@ -22,9 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2035878321870CED00FD5451 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		20358785218710F900FD5451 /* CoordinateWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateWeatherViewController.swift; sourceTree = "<group>"; };
+		203587872187117F00FD5451 /* SegueHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
 		204BF065218700FF0061732C /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		204BF068218700FF0061732C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		204BF06A218700FF0061732C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		204BF06D218700FF0061732C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		204BF06F218701000061732C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		204BF072218701000061732C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,7 +108,8 @@
 		206090D2218702AE000CBA15 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				204BF06A218700FF0061732C /* ViewController.swift */,
+				2035878321870CED00FD5451 /* MapViewController.swift */,
+				20358785218710F900FD5451 /* CoordinateWeatherViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 				20F1021221870758004465FF /* Configurable.swift */,
 				20F1021421870836004465FF /* LocationUsableType.swift */,
 				20F102162187089F004465FF /* AlertPresentable.swift */,
+				203587872187117F00FD5451 /* SegueHandler.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -241,18 +247,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Weather/Pods-Weather-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/PMAlertController/PMAlertController.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/arek/arek.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMAlertController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/arek.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -289,10 +293,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				20F1021B218709B7004465FF /* Weather.swift in Sources */,
-				204BF06B218700FF0061732C /* ViewController.swift in Sources */,
 				204BF069218700FF0061732C /* AppDelegate.swift in Sources */,
+				20358786218710F900FD5451 /* CoordinateWeatherViewController.swift in Sources */,
 				20F1021321870758004465FF /* Configurable.swift in Sources */,
+				2035878421870CED00FD5451 /* MapViewController.swift in Sources */,
 				206090D72187034E000CBA15 /* Constants.swift in Sources */,
+				203587882187117F00FD5451 /* SegueHandler.swift in Sources */,
 				20F102172187089F004465FF /* AlertPresentable.swift in Sources */,
 				20F102192187095C004465FF /* ServiceManager.swift in Sources */,
 				20F1021521870836004465FF /* LocationUsableType.swift in Sources */,

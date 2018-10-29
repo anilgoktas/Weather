@@ -1,7 +1,7 @@
 # platform :ios, '9.0'
 
 def corePods
-pod 'arek'
+pod 'Kingfisher'
 end
 
 def modelPods
