@@ -15,10 +15,10 @@ final class ServiceManager: NSObject {
     // MARK: - Properties
     
     enum URLString {
-        static let weather = "http://api.openweathermap.org/data/2.5/weather"
-        static let icon = "http://openweathermap.org/img/w/"
+        private static let weather = "https://api.openweathermap.org/data/2.5/weather"
+        static let icon = "https://openweathermap.org/img/w/"
         
-        static func weather(coordinate: CLLocationCoordinate2D) -> String {
+        fileprivate static func weather(coordinate: CLLocationCoordinate2D) -> String {
             // TODO: - Language option is also available, see https://openweathermap.org/current#multi
             return URLString.weather
                 + "?lat=\(coordinate.latitude)"
