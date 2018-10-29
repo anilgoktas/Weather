@@ -31,14 +31,14 @@ extension LocationUsableType where Self: UIViewController {
         }
     }
     
-    fileprivate func configureManager() {
+    private func configureManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10.0
         locationManager.startUpdatingLocation()
     }
     
-    fileprivate func showAlert() {
+    private func showAlert() {
         let alertController = UIAlertController(title: "Location Disabled", message: "Please share your location with us, so we can inform you about weather.", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
