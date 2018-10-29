@@ -36,8 +36,6 @@ extension MapViewController {
     @IBAction func showCurrentLocation(_ sender: Any) {
         if let location = locationManager.location {
             mapView.setCenter(location.coordinate, animated: true)
-        } else {
-            print("Current location is nil.")
         }
     }
     
@@ -58,6 +56,24 @@ extension MapViewController: Configurable {
     
     func configureModel() {
         configureLocationManager()
+    }
+    
+    func configureView() {
+        // MKMapView default double tap gesture is zoom.
+        // However we want to show weather at that location. Thus override it.
+        removeMapViewDoubleTapZoom()
+    }
+    
+    private func removeMapViewDoubleTapZoom() {
+        guard
+            let mapSubview = mapView.subviews.first,
+            let gestureRecognizers = mapSubview.gestureRecognizers
+        else { return }
+        
+        // Remove double tap gesture recognizer.
+        let tapGestureRecognizers = gestureRecognizers.compactMap { $0 as? UITapGestureRecognizer }
+        let doubleTapGestureRecognizers = tapGestureRecognizers.filter { $0.numberOfTapsRequired == 2 }
+        doubleTapGestureRecognizers.forEach { mapSubview.removeGestureRecognizer($0) }
     }
     
 }
@@ -89,6 +105,7 @@ extension MapViewController: LocationUsableType, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         configureLocationManager()
         
+        // Update map view when authorization is successful.
         if status == .authorizedWhenInUse {
             mapView.showsUserLocation = true
             showCurrentLocation(status)
