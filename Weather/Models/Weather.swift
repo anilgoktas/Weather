@@ -30,19 +30,12 @@ final class Weather {
     
     // MARK: - Life Cycle
     
-    init() {
-        title = "Loading..."
-        descriptionString = "Please wait"
-        locationName = " "
-    }
-    
-    fileprivate func update(with json: JSON) {
+    private func update(with json: JSON) throws {
         locationName = json["name"].stringValue
         temperature = json["main"]["temp"].intValue
         
         guard let weatherElement = json["weather"].arrayValue.first else {
-            print("weather array doesn't contain any info")
-            return
+            throw ConfigureError.doNotHaveInfo
         }
         
         title = weatherElement["main"].stringValue
@@ -56,29 +49,33 @@ final class Weather {
 
 extension Weather {
     
-    func configure(coordinate: CLLocationCoordinate2D) {
+    enum ConfigureError: LocalizedError {
+        case doNotHaveInfo
+    }
+    
+    func configure(coordinate: CLLocationCoordinate2D, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        // Retain data request in order to cancel it in the future if required.
         dataRequest = ServiceManager.weatherRequest(coordinate: coordinate).responseJSON { (response) in
-            DispatchQueue.global(qos: .background).async {
-                guard let value = response.result.value, response.result.error == nil else {
-                    print(response.result.error?.localizedDescription ?? "Weather configure error")
+            // Do json conversions on background queue.
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                // Check whether self still exists and response is valid.
+                guard let `self` = self, let value = response.result.value, response.result.error == nil else {
+                    completion(false, response.result.error)
                     return
                 }
                 
+                self.dataRequest = nil
                 let weatherJSON = JSON(value)
-                self.update(with: weatherJSON)
                 
-                // Notify update.
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: .WeatherDidUpdate, object: nil)
+                // Update with json.
+                do {
+                    try self.update(with: weatherJSON)
+                    DispatchQueue.main.async { completion(true, nil) }
+                } catch {
+                    DispatchQueue.main.async { completion(false, error) }
                 }
             }
         }
     }
     
-}
-
-// MARK: - Notification.Name
-
-extension Notification.Name {
-    static let WeatherDidUpdate = Notification.Name(rawValue: "WeatherDidUpdate")
 }
