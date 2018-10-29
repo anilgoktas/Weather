@@ -10,6 +10,8 @@ import UIKit
 import CoreLocation
 import Kingfisher
 
+// TODO: - Celcius/Fahrenheit conversion can be done when user requests.
+
 final class CoordinateWeatherViewController: UIViewController {
     
     // MARK: - IBOutlets
