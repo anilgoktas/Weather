@@ -60,7 +60,7 @@ extension Weather {
             DispatchQueue.global(qos: .background).async { [weak self] in
                 // Check whether self still exists and response is valid.
                 guard let `self` = self, let value = response.result.value, response.result.error == nil else {
-                    completion(false, response.result.error)
+                    DispatchQueue.main.async { completion(false, response.result.error) }
                     return
                 }
                 
